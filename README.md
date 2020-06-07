@@ -40,7 +40,7 @@ _Given a customer enrolled into a program_
 
 _When a customer enrolls to a program_
 
-_Then they should be told double enrollment is not possible._
+_Then they are told double enrollment is not possible._
 
 __*Story 3:*__
 
@@ -85,4 +85,4 @@ As this is a 3-rd party service, I do not include any load or failover testing f
 ## How to run
 Run `pytest --html=report.html` in the test directory.
 
-Sample output: [report.html](report.html) (note 1 failing test).
+Sample output: [report.html](https://htmlpreview.github.io/?https://github.com/primacactus/Exercise/blob/develop/report.html) (note 1 failing test).
