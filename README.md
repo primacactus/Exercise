@@ -80,7 +80,7 @@ You may notice there are not much checks for date value in responses. The reason
 
 The test `test_special_case_will_fail` fails, as it's name implies. It checks a special case, when I request an exchange rate for the currency itself. EUR:EUR and USD:USD are tested. The endpoint acts inconsistently: for USD:USD if gives 1.0, but for EUR:EUR gives an error code. This could happen because EUR is the default base here.
 
-As this is a 3-rd party service, I do not include any load or failover testing for it. You can find an example of a performance test in [test_api_times.py](test_api_times.py) where I'm logging responce times for a certain number of currency symbols (1, 2, 4, 8) and increasing date interval (1 day, 1 month, 1 year). In real world I would feed this data to ELK stack and supplement it with server performance data on a dashboard.
+As this is a 3-rd party service, I do not include any load or failover testing for it. You can find an example of a performance test in [test_api_times.py](test_api_times.py) where I'm logging responce times for a certain number of currency symbols (1, 2, 4, 8) and increasing date interval (1 day, 1 month, 1 year). In real world I would feed this data (and probably use Python logging) to ELK stack and supplement it with server performance data on a dashboard.
 
 ## How to run
 Run `pytest --html=report.html` in the test directory.
