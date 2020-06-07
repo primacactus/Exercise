@@ -24,13 +24,13 @@ When I participate in user story discussion I guide myself with the following co
 
 First I would listen if the Engineering Team and the Product Owner share a common understanding of what should be done. If anything is unclear, I’d ask questions.
 
-Who our users are? Why are they using features under consideration? Are they expected to be existing loyal customers or newcomers attracted by the program?
+Who our users are? Why are they using features under consideration? Are they expected to be existing loyal customers or newcomers attracted by the program? What devices will be used to access the program (desktop, phone, store terminal)?
 
 What are the functional and non-functional expectations? I would ensure we know what details to add to these stories and I have an idea how to test it.
 
-How many users are expected? What is their location? Any time periods when extremely high usage is expected?
+How many users are expected? What is their location (geolocation)? Any time periods when extremely high usage is expected, like holidays or special events?
 
-Are there any time limits for the loyalty program? Do points expire?
+Are there any time limits for the loyalty program? Do points expire? Are there different levels of membership with different conditions of point accumulation and spending?
 
 Are there any special cases? Any error cases to handle? For example,
 
@@ -53,7 +53,7 @@ _Then they should be allowed to redeem 5 points only. Remark: the actual require
 Do we miss any requirements or stories? I’d check and ask if there are stories about reward points accumulation.
 After I ensure we are going to do the right things, I'd see if we are going to show our work result in the right way. Imagine the case when the backend is developed first and there's no UI yet to show new features on. And our PO is not inclined to dive into API call details or log entries.
 
-In this case we should agree with PO what is the expected outcome of each story which could be demonstrated with acceptable level of technical detail. For example, we can demonstrate automated tests passing. Some workflow diagrams will help, too.
+In this case we should agree with PO what is the expected outcome of each story which could be demonstrated with acceptable level of technical detail. For example, we can demonstrate automated tests passing. Workflow diagrams and metrics like response time and throughput will help, too.
 
 Actual project situation could be different, but the idea stays the same - our work has to be valuable and visible.
 
@@ -74,13 +74,15 @@ For this exercise I selected https://exchangeratesapi.io/. This API provides cur
 
 I'm checking a number of positive scenarios and some error cases in [test_api.py](test_api.py). There are also data-driven tests where I check rate value for historic data.
 
+Another possible way to validate currency rate values is to do a cross-check with another rate source. Currency rates should be requested for the same date and symbol and compared with certain precision. 
+
 Given endpoint does not require an API key or any other way of authentication.
 
 You may notice there are not much checks for date value in responses. The reason is when requested date is a weekend or a holiday the endpoint returns rates for the last business day. For a real test I'd account for this logic: find a source of business days for the given business institution and check such cases as weekends and last and first day of the year. For this exercise I left holiday check out of scope.
 
 The test `test_special_case_will_fail` fails, as it's name implies. It checks a special case, when I request an exchange rate for the currency itself. EUR:EUR and USD:USD are tested. The endpoint acts inconsistently: for USD:USD if gives 1.0, but for EUR:EUR gives an error code. This could happen because EUR is the default base here.
 
-As this is a 3-rd party service, I do not include any load or failover testing for it. You can find an example of a performance test in [test_api_times.py](test_api_times.py) where I'm logging responce times for a certain number of currency symbols (1, 2, 4, 8) and increasing date interval (1 day, 1 month, 1 year). In real world I would feed this data (and probably use Python logging) to ELK stack and supplement it with server performance data on a dashboard.
+As this is a 3-rd party service, I do not include any load or failover testing for it. You can find an example of a performance test in [test_api_times.py](test_api_times.py) where I'm logging responce times for a certain number of currency symbols (1, 2, 4, 8) and increasing date interval (1 day, 1 month, 1 year). In real world I would feed this data (and probably use Python logging) to ELK stack and supplement it with server performance data on a dashboard. Also, depending on requirements, I'd consider more precise timer, such as `time_ns` or `timeit`.
 
 ## How to run
 Run `pytest --html=report.html` in the test directory.

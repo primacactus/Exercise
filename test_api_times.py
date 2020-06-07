@@ -6,6 +6,7 @@ from test_api import api_url_base
 
 
 def test_get_rate_times():
+    """Response times are measured for increasing number of currencies and increasing date intervals."""
     rates = f'{api_url_base}history'
     perf_data = []
     for d in read_test_data("workload.csv"):
