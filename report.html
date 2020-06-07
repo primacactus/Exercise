@@ -243,7 +243,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 06-Jun-2020 at 17:29:07 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.1.1</p>
+    <p>Report generated on 07-Jun-2020 at 00:01:07 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,7 +259,7 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.8.3</td></tr></table>
     <h2>Summary</h2>
-    <p>17 tests ran in 8.71 seconds. </p>
+    <p>17 tests ran in 8.27 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">16 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -275,16 +275,16 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test_api.py::test_special_case_will_fail[latest-EUR-EUR]</td>
-          <td class="col-duration">0.67</td>
+          <td class="col-duration">0.25</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">path = &#x27;latest&#x27;, base = &#x27;EUR&#x27;, symbol = &#x27;EUR&#x27;<br/><br/>    @pytest.mark.parametrize(&quot;path, base, symbol&quot;, read_test_data(&quot;special_case_data.csv&quot;))<br/>    def test_special_case_will_fail(path, base, symbol):<br/>        response = get_rates(path, base=base, symbols=symbol)<br/>&gt;       assert response.status_code == 200<br/><span class="error">E       assert 400 == 200</span><br/><span class="error">E        +  where 400 = &lt;Response [400]&gt;.status_code</span><br/><br/>test_api.py:55: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">path = &#x27;latest&#x27;, base = &#x27;EUR&#x27;, symbol = &#x27;EUR&#x27;<br/><br/>    @pytest.mark.parametrize(&quot;path, base, symbol&quot;, read_test_data(&quot;special_case_data.csv&quot;))<br/>    def test_special_case_will_fail(path, base, symbol):<br/>        &quot;&quot;&quot;Test checks if exchange rate is 1.0 when currency symbol and base are the same.&quot;&quot;&quot;<br/>        response = get_rates(path, base=base, symbols=symbol)<br/>&gt;       check_request_success(response)<br/><br/>test_api.py:66: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>response = &lt;Response [400]&gt;<br/><br/>    def check_request_success(response):<br/>        &quot;&quot;&quot;Helper function to check if request is successful and properly formatted&quot;&quot;&quot;<br/>&gt;       assert response.status_code == 200<br/><span class="error">E       assert 400 == 200</span><br/><span class="error">E        +  where 400 = &lt;Response [400]&gt;.status_code</span><br/><br/>test_api.py:29: AssertionError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_get_last_rate</td>
-          <td class="col-duration">0.24</td>
+          <td class="col-duration">0.30</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -293,7 +293,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_get_rate_for_symbols</td>
-          <td class="col-duration">0.19</td>
+          <td class="col-duration">0.22</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -311,24 +311,6 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_get_historic_rates[2020-05-15--USD-1.0798]</td>
-          <td class="col-duration">0.19</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test_api.py::test_get_historic_rates[2020-05-15-USD-EUR-0.9260974254]</td>
-          <td class="col-duration">0.20</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test_api.py::test_get_historic_rates[2019-01-01-PLN-CAD-0.3627888594]</td>
           <td class="col-duration">0.21</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -337,7 +319,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_api.py::test_get_historic_rates[2019-01-01--USD-1.145]</td>
+          <td class="col-name">test_api.py::test_get_historic_rates[2020-05-15-USD-EUR-0.9260974254]</td>
           <td class="col-duration">0.19</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -346,8 +328,26 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_api.py::test_get_historic_rates[2019-01-01-USD-EUR-0.8733624454]</td>
+          <td class="col-name">test_api.py::test_get_historic_rates[2019-01-01-PLN-CAD-0.3627888594]</td>
           <td class="col-duration">0.19</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_api.py::test_get_historic_rates[2019-01-01--USD-1.145]</td>
+          <td class="col-duration">0.25</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_api.py::test_get_historic_rates[2019-01-01-USD-EUR-0.8733624454]</td>
+          <td class="col-duration">0.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -365,7 +365,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_get_historic_rates[2018-12-31-KRW-USD-0.0008959802]</td>
-          <td class="col-duration">0.20</td>
+          <td class="col-duration">0.21</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -383,7 +383,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_special_case_will_fail[latest-USD-USD]</td>
-          <td class="col-duration">0.21</td>
+          <td class="col-duration">0.17</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -392,7 +392,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_no_such_symbol</td>
-          <td class="col-duration">0.21</td>
+          <td class="col-duration">0.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -401,7 +401,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_date_is_too_old</td>
-          <td class="col-duration">0.29</td>
+          <td class="col-duration">0.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -410,7 +410,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api.py::test_date_range_in_the_future</td>
-          <td class="col-duration">0.20</td>
+          <td class="col-duration">0.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -419,7 +419,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_api_times.py::test_get_rate_times</td>
-          <td class="col-duration">3.13</td>
+          <td class="col-duration">3.01</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
