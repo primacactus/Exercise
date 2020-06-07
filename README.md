@@ -1,6 +1,4 @@
-## Exercise 2
-
-# Description
+# Exercise 2
 Sample API test.
 
 # Implementation
